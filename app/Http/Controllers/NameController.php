@@ -7,7 +7,14 @@ use App\Name;
 class NameController extends Controller
 {
     public function index(){
-    	return view('welcome');
+
+        $categories = Category::has('names')
+                      ->inRandomOrder()
+                      ->limit(Category::HOME_PAGE_CATEGORY)
+                      ->with('names')
+                      ->get();
+
+        return view('welcome',compact('categories'));
     }
 
     public function names(Request $request, $cat){
