@@ -1,4 +1,3 @@
-@extends('layouts.default')
 @section('content')
 
   <div class="p-4 p-md-5 mb-4 text-white rounded banner">
