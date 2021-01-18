@@ -13,7 +13,7 @@
       <p>BabyNames.com has been a trusted source of names for 25 years. Whether you're choosing a name for your baby or just love names, you've come to the right place! Here you can research the meaning of names, history, origin, etymology, and fun name facts of over 20,000 first and last names.</p>
     </div>
     <div class="bg-secondary text-white p-2 mb-3">
-      <h4 class="m-0">American Baby Names</h4>
+      <h4 class="m-0">Americavn Baby Names</h4>
     </div>
     <p>Currently we have 7119 Boys Names and 10271 Girls Names with Meanings in our American collection <br> Please Choose a Letter</p>
     <div class="topcolor btn">Boys</div>
