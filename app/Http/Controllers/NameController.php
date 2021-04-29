@@ -23,14 +23,22 @@ class NameController extends Controller
             return redirect('/') ;
         } 
 
-        $names = Name::whereHas('categories', function($query) use ($cat) {
+        $childCats = Category::whereSlug($cat)
+                    ->with('childern')->get();
+
+        $catId = ($childCats) ?? $childCats->pluck('id');
+
+        $names = Name::whereHas('categories', function($query) use ($cat,$catId) {
 		    $query->where('slug',$cat);
+            $query->orwhere('parent', $catId);
 		})->get();
-        
+
+         $childern = (@$childCats[0]->childern);
+
         $boys = @$names->where('gender',Name::MALE)->count(); 
         $girls = @$names->where('gender',Name::FEMALE)->count(); 
 
-    	return view('names',compact('cat','boys','girls'));
+    	return view('names',compact('cat','boys','girls','childern'));
     }
 
     public function getNames(Request $request, $cat,$gender,$letter){

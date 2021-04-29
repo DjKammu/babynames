@@ -4,6 +4,25 @@
     <div class="bg-secondary text-white p-2 mb-3">
       <h4 class="m-0">{{ ucfirst(@$cat) }} Baby Names</h4>
     </div>
+
+    @if(@count($childern) > 0)
+      <div class="p-0 mb-3">
+      <h5 class="m-0"> {{ ucfirst(@$cat) }} All Categories  </h5>
+      @php
+       
+      $categories =  (@$childern->count()) ? @$childern->pluck('name','slug') : [];
+
+      @endphp
+      </br>
+      @foreach ( $categories as $ck => $category )
+         
+         <a href='{{ url("names/$ck")}}' class="btn btn-success btn-sm">{{ $category }} 
+         </a>
+
+      @endforeach
+     </div>
+    @endif
+
     <p>Currently we have <span class="boy"> {{ $boys }} Boys </span> Names and <span class="girl">{{ $girls }} Girls </span> Names with Meanings in our American collection <br> Please Choose a Letter</p>
     <div class="topcolor btn">Boys</div>
     @php

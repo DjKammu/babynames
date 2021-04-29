@@ -13,4 +13,8 @@ class Category extends Model
     public function names(){
         return $this->belongsToMany(Name::class,'category_name')->withTimestamps();
     }
+
+    public function childern() {
+        return $this->hasMany(static::class,'parent')->orderBy('name');
+     }
 }
