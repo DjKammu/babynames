@@ -3,9 +3,9 @@
     <div class="row">
     <div class="col-md-8">    
     <div class="bg-secondary text-white p-2 mb-3">
-      <h4 class="m-0">{{ ucfirst(@$cat)}} {{ucfirst(@$gender)}} Names » {{ ucfirst(@$letter) }}</h4>
+      <h4 class="m-0">{{ ucfirst(@$cat)}} {{ucfirst(@$gender)}} Names » {{ ucfirst(@$term) }} » {{ ucfirst(@$word) }}</h4>
     </div>
-    <p>Currently we have <span class="{{ $gender }}"> {{ ${Str::plural($gender)} }} {{ Str::plural( ucfirst(@$gender)) }} </span> Beginning with letter A in our {{ ucfirst(@$cat)}} collection Names </p>
+    
     <div class="topcolor btn">Boys</div>
     @php
      $alphas = range('A', 'Z');
@@ -13,8 +13,7 @@
     <hr class="mt-0">
         <div class="mb-3 fr">
             @foreach($alphas as $alpha)
-                 <li {{ (strtolower($alpha) == strtolower($letter)) && 
-                 (strtolower($gender) == 'boy') ? 'class=alpha-active' : ''}} > 
+                 <li > 
                     <a href='{{ route("baby-names","$cat/boy/$alpha")}}'> {{ $alpha }}</a>
                   </li>
             @endforeach
@@ -25,8 +24,7 @@
     <hr class="mt-0">
     <div class="mb-3 fr">
        @foreach($alphas as $alpha)
-             <li {{ (strtolower($alpha) == strtolower($letter)) && 
-             (strtolower($gender) == 'girl') ? 'class=alpha-active' : ''}} >
+             <li  >
                 <a href='{{ route("baby-names","$cat/girl/$alpha")}}'> {{ $alpha }}</a>
               </li>
         @endforeach

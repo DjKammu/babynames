@@ -17,11 +17,15 @@ URL::forceScheme('https');
 
 Route::get('/','NameController@index');
 
-Route::get('/names/{cat}','NameController@names');
+Route::get('/baby-names/{cat}','NameController@names')->name('baby-names');
 
-Route::get('/name/{gender}/{slug}','NameController@getName');
+Route::get('/baby-name/{gender}/{slug}','NameController@getName')->name('baby-name');
 
-Route::get('/names/{cat}/{gender}/{letter}','NameController@getNames');
+Route::get('/baby-names/{cat}/{gender}/{letter}','NameController@getNames')
+->name('baby-names.letter');
+
+Route::get('/baby-names/{cat}/{gender}/{term}/{word}','NameController@searchNames')
+->name('baby-names.search');
 
 Route::get('/cache-clear', function () {
     Artisan::call('config:clear');

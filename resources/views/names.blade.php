@@ -16,7 +16,7 @@
       </br>
       @foreach ( $categories as $ck => $category )
          
-         <a href='{{ url("names/$ck")}}' class="btn btn-success btn-sm">{{ $category }} 
+         <a href='{{ route("baby-names","$ck")}}' class="btn btn-success btn-sm">{{ $category }} 
          </a>
 
       @endforeach
@@ -32,7 +32,7 @@
         <div class="mb-3 fr">
             @foreach($alphas as $alpha)
                  <li>
-                    <a href='{{ URL::to("names/$cat/boy/$alpha")}}'> {{ $alpha }}</a>
+                    <a href='{{route("baby-names.letter",[$cat,"boy", $alpha])}}'> {{ $alpha }}</a>
                   </li>
             @endforeach
 
@@ -43,7 +43,7 @@
         <div class="mb-3 fr">
            @foreach($alphas as $alpha)
                  <li>
-                    <a href='{{ URL::to("names/$cat/girl/$alpha")}}'> {{ $alpha }}</a>
+                    <a href='{{route("baby-names.letter",[$cat,"girl",$alpha] ) }}'> {{ $alpha }}</a>
                   </li>
             @endforeach
         </div>  

@@ -15,7 +15,7 @@
                  </tr>
                   <tr>
                   <th scope="row">Meanings</th>
-                  <td>{{ (@$name->meanings->count()) ? @$name->meanings->pluck('name')->join(', ') : 'Add Meaning' }}</td>
+                  <td>{{ (@count($name->meanings) > 0) ? @$name->meanings->pluck('name')->join(', ') : 'Add Meaning' }}</td>
                 </tr>
               </tbody>
             </table>
@@ -25,6 +25,7 @@
           <h5 class="m-0"> Categories  </h5>
           @php
            
+           
           $categories =  (@$name->categories->count()) ? @$name->categories->pluck('name','slug') : [];
           $origins =  (@$name->origins->count()) ? @$name->origins->pluck('title','slug') : [];
           $tags =  (@$name->tags->count()) ? @$name->tags->pluck('name','slug') : [];
@@ -33,7 +34,7 @@
           </br>
           @foreach ( $categories as $ck => $category )
              
-             <a href='{{ url("names/$ck")}}' class="btn btn-success btn-sm">{{ $category }} 
+             <a href='{{ route("baby-names","$ck")}}' class="btn btn-success btn-sm">{{ $category }} 
              </a>
           @endforeach
 
@@ -69,7 +70,7 @@
 
     </div>
     <div class="col-md-4">
-        
+        @include('includes.search')
     </div>
   </div>
 @stop

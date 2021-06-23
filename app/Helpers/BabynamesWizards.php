@@ -14,6 +14,8 @@ class BabynamesWizards {
 
   const NAMES_SLUG = 'names';
 
+  const NAME_SLUG = 'name';
+
   public static function getSEOTags()
   {
         $uri = request()->segments();
@@ -23,9 +25,19 @@ class BabynamesWizards {
         $seoTags->title = config('title'); 
         $seoTags->meta_description = config('description');
         $seoTags->meta_keywords = config('keywords');
+        
 
+        if(@$uri[0] == self::NAME_SLUG){
+      
+            if(@$uri[1] && @$uri[2]){
 
-        if(@$uri[0] == self::NAMES_SLUG){
+               $seoTags->title = ucfirst(@$uri[1]).' » '.ucfirst(@$uri[2]).' Name ';
+
+               $seoTags->meta_description = ucfirst(@$uri[1]).' Name '.ucfirst(@$uri[2]).' and Meaning';
+            }
+
+        }
+        else if(@$uri[0] == self::NAMES_SLUG){
 
             $qNames = Name::whereHas('categories', function($query) use ($uri) {
                 $query->where('slug',@$uri[1]);

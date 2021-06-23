@@ -42,12 +42,11 @@
 
   <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between">
-      <a class="p-2 link-secondary" href="{{ url('names/american') }}">American</a>
-      <a class="p-2 link-secondary" href="{{ url('names/arabic') }}">Arabic</a>
-      <a class="p-2 link-secondary" href="{{ url('names/australian') }}">Australian</a>
-      <a class="p-2 link-secondary" href="{{ url('names/christian') }}">Christian</a>
-      <a class="p-2 link-secondary" href="{{ url('names/indian') }}">Indian</a>
-      <!-- <a class="p-2 link-secondary" href="{{ url('names/american') }}">More</a> -->
+      <a class="p-2 link-secondary" href="{{ route('baby-names','american') }}">American</a>
+      <a class="p-2 link-secondary" href="{{route('baby-names','arabic') }}">Arabic</a>
+      <a class="p-2 link-secondary" href="{{ route('baby-names','australian') }}">Australian</a>
+      <a class="p-2 link-secondary" href="{{ route('baby-names','christian') }}">Christian</a>
+      <a class="p-2 link-secondary" href="{{ route('baby-names','indian') }}">Indian</a>
     </nav>
   </div>
   <main>
@@ -56,14 +55,16 @@
   </main>
 
 <footer class="blog-footer">
-  <p>Blog template built for <a href="{{ url('/') }}">BabyNamesWizards.com</a> by <a href="{{ url('/') }}">@BabyNamesWizards</a>.</p>
+  <p> Copyright Reserved &copy; {{ date('Y') }} <a href="{{ url('/') }}">BabyNamesWizards.com</a> by <a href="{{ url('/') }}">@BabyNamesWizards</a>.</p>
   <p>
-    <a href="#">Back to top</a>
+    <a href="javascript:void(0)">Back to top</a>
   </p>
 </footer>
 
 </div>
+  <script src="{{ asset('js/jquery-min.js')}} "></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+@yield('pagescript')
+
 </body>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-  </body>
 </html>

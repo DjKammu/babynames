@@ -63,6 +63,42 @@ class NameController extends Controller
         
     	return view('names-list',compact('cat','gender','boys','letter','girls',
             'names'));
+    }  
+
+      public function searchNames(Request $request, $cat,$gender,$term,$word){
+         
+        if(!Category::whereSlug($cat)->exists() || 
+           !in_array(strtolower($gender), [ Name::BOY,Name::GIRL ]) || 
+           !in_array(strtolower($term), [Name::SEARCH_ENDS, Name::SEARCH_BEGINS, Name::SEARCH_CONTAINS, Name::SEARCH_MEANING])){
+            return redirect('/') ;
+        } 
+        $qGender = strtolower($gender) == Name::BOY ? Name::MALE : Name::FEMALE;
+         
+        $qNames = Name::whereHas('categories', function($query) use ($cat) {
+            $query->where('slug',$cat);
+        })->whereGender($qGender);
+         
+        if($term == Name::SEARCH_BEGINS){
+           $qNames->where('name', 'like', $word.'%');
+        }else if($term == Name::SEARCH_ENDS){
+           $qNames->where('name', 'like', '%'.$word);
+        }else if($term == Name::SEARCH_CONTAINS){
+           $qNames->where('name', 'like', '%'.$word.'%');
+        }else{
+             $qNames->whereHas('meanings', function($query) use ($word) {
+                $query->where('name',$word);
+            });
+        }
+
+        $allNames =  $qNames->get();
+
+        $names = $qNames->with('meanings')->paginate((new Name)->perPage);
+        
+        $boys = @$allNames->where('gender',Name::MALE)->count(); 
+        $girls = @$allNames->where('gender',Name::FEMALE)->count(); 
+        
+        return view('names-search-list',compact('cat','gender','boys', 'word', 'term','girls',
+            'names'));
     } 
 
     public function getName(Request $request,$gender,$slug){

@@ -26,7 +26,7 @@
             <div class="mb-3 fr">
               @foreach($alphas as $alpha)
                  <li > 
-                    <a href='{{ URL::to("names/$category->slug/boy/$alpha")}}'> {{ $alpha }}</a>
+                    <a href='{{ route("baby-names.letter",[$category->slug,"boy", $alpha])}}'> {{ $alpha }}</a>
                   </li>
             @endforeach
             </div>
@@ -36,7 +36,7 @@
             <div class="mb-3 fr">
              @foreach($alphas as $alpha)
                  <li  >
-                    <a href='{{ URL::to("names/$category->slug/girl/$alpha")}}'> {{ $alpha }}</a>
+                    <a href='{{ route("baby-names.letter",[$category->slug,"girl",$alpha] )}}'> {{ $alpha }}</a>
                   </li>
             @endforeach
             </div>

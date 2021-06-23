@@ -15,6 +15,15 @@ class Name extends Model
     CONST BOY = 'boy';
     CONST GIRL = 'girl';
 
+    CONST SEARCH_ENDS = 'ends';
+
+    CONST SEARCH_BEGINS = 'begins';
+
+    CONST SEARCH_CONTAINS = 'contains';
+
+    CONST SEARCH_MEANING = 'meaning';
+
+
     protected $perPage = 50;
 
     protected $fillable = [
