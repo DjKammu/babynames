@@ -43,7 +43,7 @@ Route::get('search/{slug}', [
 
 
 Route::get('{tc}/{slug}', [
-  'uses' => 'NameController@tagCateogry'
+  'uses' => 'NameController@tagOrigin'
 ])->where('slug', '([A-Za-z0-9\-\/]+)');
 
 

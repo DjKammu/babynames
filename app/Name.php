@@ -13,7 +13,10 @@ class Name extends Model
     CONST FEMALE = 'Female';
 
     CONST BOY = 'boy';
-    CONST GIRL = 'girl';
+    CONST GIRL = 'girl';  
+
+    CONST TAGS = 'tags';
+    CONST ORIGINS = 'origins';
 
     CONST SEARCH_ENDS = 'ends';
 

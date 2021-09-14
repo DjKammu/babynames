@@ -114,4 +114,25 @@ class NameController extends Controller
 
         return view('name',compact('name','gender'));
     }
+
+    public function tagOrigin(Request $request,$tagOrigin,$slug){
+         
+        if(!in_array(strtolower($tagOrigin), [ Name::ORIGINS,Name::TAGS ])){
+            return redirect('/') ;
+        } 
+
+        $qNames = Name::whereHas($tagOrigin, function($query) use ($slug) {
+            $query->where('slug',$slug);
+        });
+
+        $names = $qNames->with('meanings')->paginate((new Name)->perPage);
+        
+        $boys = @$names->where('gender',Name::MALE)->count(); 
+        $girls = @$names->where('gender',Name::FEMALE)->count(); 
+
+        $cat  = $slug;
+
+       return view('names',compact('cat','boys','girls'));
+
+    }
 }
