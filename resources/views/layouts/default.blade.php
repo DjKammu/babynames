@@ -17,6 +17,16 @@
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWJGNKSTVQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-PWJGNKSTVQ');
+  </script>
 
   </head>
   <body data-new-gr-c-s-check-loaded="14.991.0" data-gr-ext-installed="">
@@ -32,10 +42,10 @@
         <a class="blog-header-logo text-dark" href="{{ url('/') }}">BabyNamesWizards</a>
       </div>
       <div class="col-3 d-xs-none d-flex justify-content-end align-items-center ">
-           <div class="input-group">
+           <!-- <div class="input-group">
             <input type="text" class="form-control" placeholder="Search Name" aria-label="Recipient's username" aria-describedby="button-addon2">
             <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa fa-search"></i></button>
-          </div>
+          </div> -->
       </div>
     </div>
   </header>
