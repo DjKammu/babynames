@@ -124,11 +124,13 @@ class NameController extends Controller
         $qNames = Name::whereHas($tagOrigin, function($query) use ($slug) {
             $query->where('slug',$slug);
         });
+        
+        $allNames =  $qNames->get();
 
         $names = $qNames->with('meanings')->paginate((new Name)->perPage);
         
-        $boys = @$names->where('gender',Name::MALE)->count(); 
-        $girls = @$names->where('gender',Name::FEMALE)->count(); 
+        $boys = @$allNames->where('gender',Name::MALE)->count(); 
+        $girls = @$allNames->where('gender',Name::FEMALE)->count(); 
 
         $cat  = $slug;
 
