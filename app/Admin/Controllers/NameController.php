@@ -202,7 +202,8 @@ class NameController extends AdminController
 
           $meanings = @explode(';',$dt['ndfn']);
 
-          @array_pop($meanings);
+          @array_filter($meanings);
+          
 
           $bname = Name::firstOrCreate(
               ['name' => $name],
@@ -211,14 +212,15 @@ class NameController extends AdminController
                 'published' =>  $published
               ]
           );
+          
           $meaningArr = [];
 
           @$eMeanings = @$bname->meanings()->pluck('name')->all();
+          
+          @array_diff($eMeanings, $meanings);
 
-          $meanings = array_diff($eMeanings, $meanings);
-
-          foreach (@$meanings as $key => $meaning) {
-           $meaningArr[] =  new Meaning(['name' => trim($meaning)]);
+         foreach (@$meanings as $key => $meaning) {
+            $meaningArr[] =  new Meaning(['name' => trim($meaning)]);
           }
 
           @$bname->meanings()->saveMany($meaningArr);
@@ -226,7 +228,6 @@ class NameController extends AdminController
           $bname->categories()->syncWithoutDetaching( $input['categories'] );
           $bname->origins()->syncWithoutDetaching( $input['origins']);
           $bname->tags()->syncWithoutDetaching( $input['tags'] );
-
 
          }
     }
