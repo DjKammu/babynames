@@ -212,15 +212,16 @@ class NameController extends AdminController
                 'published' =>  $published
               ]
           );
-          
+
           $meaningArr = [];
 
           @$eMeanings = @$bname->meanings()->pluck('name')->all();
           
-          @array_diff($eMeanings, $meanings);
+          //$meanings = @array_diff($eMeanings, $meanings);
 
          foreach (@$meanings as $key => $meaning) {
-            $meaningArr[] =  new Meaning(['name' => trim($meaning)]);
+             if(!in_array(trim($meaning), $eMeanings))
+                $meaningArr[] =  new Meaning(['name' => trim($meaning)]);
           }
 
           @$bname->meanings()->saveMany($meaningArr);
