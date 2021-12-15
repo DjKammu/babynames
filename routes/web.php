@@ -53,18 +53,19 @@ Route::get('{slug}', [
 
 
 /*SITE MAP */
-Route::get('/index.xml', 'SitemapController@index');
-Route::get('/lyrichords.xml', 'SitemapController@lyrichords');
-Route::get('/pages.xml', 'SitemapController@pages');
+Route::get('/sitemap/index.xml', 'SitemapController@index');
+Route::get('/sitemap/categories.xml', 'SitemapController@categories');
+Route::get('/sitemap/tags.xml', 'SitemapController@tags');
+Route::get('/sitemap/origins.xml', 'SitemapController@origins');
 
-Route::get('{tc}.xml', [
-  'uses' => 'SitemapController@tagsCateogries'
-])->where('slug', '([A-Za-z0-9\-\/]+)');
+// Route::get('{tc}.xml', [
+//   'uses' => 'SitemapController@tagsCateogries'
+// ])->where('slug', '([A-Za-z0-9\-\/]+)');
 
-Route::get('{tc}/{slug}.xml', [
-  'uses' => 'SitemapController@tagCateogry'
-])->where('slug', '([A-Za-z0-9\-\/]+)');
+// Route::get('{tc}/{slug}.xml', [
+//   'uses' => 'SitemapController@tagCateogry'
+// ])->where('slug', '([A-Za-z0-9\-\/]+)');
 
-Route::get('{slug}.xml', [
-  'uses' => 'SitemapController@lyrichord'
-])->where('slug', '([A-Za-z0-9\-\/]+)');
+// Route::get('{slug}.xml', [
+//   'uses' => 'SitemapController@lyrichord'
+// ])->where('slug', '([A-Za-z0-9\-\/]+)');
