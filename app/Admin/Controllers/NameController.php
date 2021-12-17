@@ -214,9 +214,8 @@ class NameController extends AdminController
           
 
           $bname = Name::firstOrCreate(
-              ['name' => $name],
-              ['slug' =>  \Str::slug(trim($name), '-'),
-                'gender' =>  $gender,
+              ['name' => $name, 'gender' =>  $gender],
+              ['slug' =>  \Str::slug(trim($name), '-'),   
                 'published' =>  $published
               ]
           );
