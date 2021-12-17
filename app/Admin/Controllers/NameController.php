@@ -33,6 +33,14 @@ class NameController extends AdminController
     {
         $grid = new Grid(new Name());
 
+        $grid->filter(function($filter){
+          $filter->disableIdFilter();
+          $filter->like('name', 'Name');
+          $filter->like('gender', 'Gender');
+
+      });
+
+
         $grid->header(function ($query) {
             return '<a href="'.route('admin.names.import').'" class="btn btn-sm btn-success" title="Import Excel">
                 <i class="fa fa-upload"></i><span class="hidden-xs">&nbsp;&nbsp;Import Excel</span>
