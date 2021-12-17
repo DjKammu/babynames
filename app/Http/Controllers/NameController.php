@@ -19,21 +19,34 @@ class NameController extends Controller
 
     public function names(Request $request, $cat){
          
-        if(!Category::whereSlug($cat)->exists()){
+        if(!Category::whereSlug($cat)->exists() && Category::MORE != $cat ){
             return redirect('/') ;
         } 
 
         $childCats = Category::whereSlug($cat)
                     ->with('childern')->get();
 
-        $catId = ($childCats) ?? $childCats->pluck('id');
+        $catId = ($childCats->count()) ? $childCats->pluck('id') : 0;
 
         $names = Name::whereHas('categories', function($query) use ($cat,$catId) {
 		    $query->where('slug',$cat);
             $query->orwhere('parent', $catId);
 		})->get();
+        
+        $childern = (@$childCats[0]->childern);
 
-         $childern = (@$childCats[0]->childern);
+        if(!$catId){
+             $names = Name::whereHas('categories', function($query) use ($catId) {
+                $query->orwhere('parent', $catId);
+            })->get();  
+
+            $childCats = Category::whereParent(NULL)
+                       ->get();
+            
+            $childern = $childCats;
+        }
+
+         
 
         $boys = @$names->where('gender',Name::MALE)->count(); 
         $girls = @$names->where('gender',Name::FEMALE)->count(); 

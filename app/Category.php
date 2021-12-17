@@ -10,6 +10,8 @@ class Category extends Model
 
     CONST HOME_PAGE_CATEGORY = 2;
 
+    CONST MORE = 'more';
+
     public function names(){
         return $this->belongsToMany(Name::class,'category_name')->withTimestamps();
     }

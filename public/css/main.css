@@ -145,3 +145,10 @@ h1, h2, h3, h4, h5, h6 {
     background-size: cover;
     background-position: center;
   }
+
+.child-cat{
+  margin-bottom: 10px;
+}  
+.child-cat-outer{
+  text-align: justify;
+}

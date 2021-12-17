@@ -56,7 +56,10 @@
       <a class="p-2 link-secondary" href="{{route('baby-names','arabic') }}">Arabic</a>
       <a class="p-2 link-secondary" href="{{ route('baby-names','australian') }}">Australian</a>
       <a class="p-2 link-secondary" href="{{ route('baby-names','christian') }}">Christian</a>
+      <a class="p-2 link-secondary" href="{{ route('baby-names','english') }}">English</a>
+      <a class="p-2 link-secondary" href="{{ route('baby-names','french') }}">French</a>
       <a class="p-2 link-secondary" href="{{ route('baby-names','indian') }}">Indian</a>
+      <a class="p-2 link-secondary" href="{{ route('baby-names','more') }}">More</a>
     </nav>
   </div>
   <main>
