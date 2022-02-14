@@ -70,10 +70,15 @@ class NameController extends Controller
         $allNames =  $qNames->get();
 
         $names = $qNames->with('meanings')->paginate((new Name)->perPage);
-        
+
+        $names = $names->filter(function ($name) {
+            return $name->meanings()->distinct();
+        });
+
         $boys = @$allNames->where('gender',Name::MALE)->count(); 
         $girls = @$allNames->where('gender',Name::FEMALE)->count(); 
-        
+
+
     	return view('names-list',compact('cat','gender','boys','letter','girls',
             'names'));
     }  
