@@ -15,7 +15,7 @@
                  </tr>
                   <tr>
                   <th scope="row">Meanings</th>
-                  <td>{{ (@count($name->meanings) > 0) ? @$name->meanings->pluck('name')->join(', ') : 'Add Meaning' }}</td>
+                  <td>{{ (@count($name->meanings) > 0) ? @$name->meanings->pluck('name')->unique()->join(', ') : 'Add Meaning' }}</td>
                 </tr>
               </tbody>
             </table>
