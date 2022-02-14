@@ -69,11 +69,9 @@ class NameController extends Controller
 
         $allNames =  $qNames->get();
 
-        $names = $qNames->with('meanings')->paginate((new Name)->perPage);
-
-        $names = $names->filter(function ($name) {
-            return $name->meanings()->distinct();
-        });
+        $names = $qNames->with(['meanings' => function ($query) {
+                $query->where('name','<>','...')->distinct('name');
+         }])->paginate((new Name)->perPage);
 
         $boys = @$allNames->where('gender',Name::MALE)->count(); 
         $girls = @$allNames->where('gender',Name::FEMALE)->count(); 
@@ -110,7 +108,9 @@ class NameController extends Controller
 
         $allNames =  $qNames->get();
 
-        $names = $qNames->with('meanings')->paginate((new Name)->perPage);
+        $names = $qNames->with(['meanings' => function ($query) {
+                $query->where('name','<>','...')->distinct('name');
+        }])->paginate((new Name)->perPage);
         
         $boys = @$allNames->where('gender',Name::MALE)->count(); 
         $girls = @$allNames->where('gender',Name::FEMALE)->count(); 
@@ -128,7 +128,11 @@ class NameController extends Controller
         $qGender = strtolower($gender) == Name::BOY ? Name::MALE : Name::FEMALE;
 
         $name = Name::whereGender($qGender)->where('slug', $slug)
-                 ->with(['meanings','origins','tags','categories'])->first();
+                 ->with(['meanings' => function ($query) {
+                        $query->where('name','<>','...')->distinct('name');
+                 },'origins','tags','categories'])->first();
+
+
 
         return view('name',compact('name','gender'));
     }
@@ -145,7 +149,9 @@ class NameController extends Controller
         
         $allNames =  $qNames->get();
 
-        $names = $qNames->with('meanings')->paginate((new Name)->perPage);
+         $names = $qNames->with(['meanings' => function ($query) {
+                $query->where('name','<>','...')->distinct('name');
+         }])->paginate((new Name)->perPage);
         
         $boys = @$allNames->where('gender',Name::MALE)->count(); 
         $girls = @$allNames->where('gender',Name::FEMALE)->count(); 

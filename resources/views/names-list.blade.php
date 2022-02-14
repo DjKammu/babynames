@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+
     <div class="row">
     <div class="col-md-8">    
     <div class="bg-secondary text-white p-2 mb-3">
