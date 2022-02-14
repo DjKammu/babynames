@@ -45,7 +45,7 @@
                  <tr  onclick="window.location='{{ route("baby-name",[$gender, $bname])}}';">
                       <th scope="row"> {{ $names->firstItem() + $key }}</th>
                       <td> {{ $name->name }} </td>
-                      <td>{{ (@$name->meanings->count()) ? @$name->meanings->pluck('name')->unique()->join(', ') : 'Add Meaning' }}</td>
+                      <td>{{ (@$name->meanings->count()) ? @$name->meanings->where('name','<>','...')->pluck('name')->unique()->join(', ') : 'Add Meaning' }}</td>
                  </tr>
             @endforeach
 
