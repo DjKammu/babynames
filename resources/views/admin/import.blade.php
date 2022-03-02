@@ -1,5 +1,8 @@
-<form action="{{ route('admin.post.names.import') }}" method="POST" enctype="multipart/form-data">
-  @csrf
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-info">
+   <form action="{{ route('admin.post.names.import') }}" method="POST" enctype="multipart/form-data">
+   @csrf
   <div>
   <div class="col-sm-6">
     <div class="card">
@@ -28,7 +31,7 @@
 
               <div class="form-group">
                 <label for="name">Origin/Country</label>
-                <select class="form-control" name="origins[]" multiple="" required="">
+                <select class="form-control origins"  name="origins[]" multiple="" required="">
                    <option value=""> Select Country</option>
                    @php
                      $countries = \App\Country::pluck('title','id');
@@ -44,7 +47,7 @@
 
               <div class="form-group">
                 <label for="name">Categories</label>
-                <select class="form-control" name="categories[]" multiple="" required="">
+                <select class="form-control categories" name="categories[]" multiple="" required="">
                    <option value=""> Select Category</option>
                    @php
                      $categories = \App\Category::pluck('name','id');
@@ -60,7 +63,7 @@
 
               <div class="form-group">
                 <label for="name">Tags</label>
-                <select class="form-control" name="tags[]" multiple="" required="">
+                <select class="form-control tags" name="tags[]" multiple="" required="">
                    <option value=""> Select Tag</option>
                    @php
                      $tags = \App\Tag::pluck('name','id');
@@ -86,8 +89,6 @@
                 </div>
               </div>
 
-                
-
                 <button style="background-color: indigo;border: none;color: #ffff;padding: 12px 14px;border-radius: 10px;margin: 10px;">Import</button>
             </div>
           </div>
@@ -97,3 +98,6 @@
     </div>
   </div>
 </form>
+</div>
+</div>
+</div>

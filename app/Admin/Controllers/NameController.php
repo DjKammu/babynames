@@ -14,6 +14,7 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+Use Encore\Admin\Admin;
 
 class NameController extends AdminController
 {
@@ -167,6 +168,8 @@ class NameController extends AdminController
 
     public function getImport(Content $content)
     {
+        Admin::js(asset('js/admin-js.js'));
+
         $content->header('Import Branches Excel Here');
 
          // add breadcrumb since v1.5.7
