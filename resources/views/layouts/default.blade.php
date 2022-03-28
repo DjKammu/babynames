@@ -32,7 +32,7 @@
   <body data-new-gr-c-s-check-loaded="14.991.0" data-gr-ext-installed="">
     
 <div class="container main-bg">
-  <header class="blog-header py-3">
+  <header class="blog-header py-3 d-none d-md-block">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1 social">
         <a href=""><i class="fa fa-facebook"></i></a>
@@ -50,17 +50,44 @@
     </div>
   </header>
 
-  <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-      <a class="p-2 link-secondary" href="{{ route('baby-names','american') }}">American</a>
-      <a class="p-2 link-secondary" href="{{route('baby-names','arabic') }}">Arabic</a>
-      <a class="p-2 link-secondary" href="{{ route('baby-names','australian') }}">Australian</a>
-      <a class="p-2 link-secondary" href="{{ route('baby-names','christian') }}">Christian</a>
-      <a class="p-2 link-secondary" href="{{ route('baby-names','english') }}">English</a>
-      <a class="p-2 link-secondary" href="{{ route('baby-names','french') }}">French</a>
-      <a class="p-2 link-secondary" href="{{ route('baby-names','indian') }}">Indian</a>
-      <a class="p-2 link-secondary" href="{{ route('baby-names','more') }}">More</a>
-    </nav>
+  <div>
+
+     <nav class="navbar navbar-expand-sm bg-light navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand d-md-none blog-header-logo" href="#">BabyNamesWizards</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('baby-names','american') }}">American</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{route('baby-names','arabic') }}">Arabic</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('baby-names','australian') }}">Australian</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('baby-names','christian') }}">Christian</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('baby-names','english') }}">English</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('baby-names','french') }}">French</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('baby-names','indian') }}">Indian</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('baby-names','more') }}">More</a>
+                    </li>    
+                </ul>
+                </div>
+            </div>
+        </nav>
   </div>
   <main>
      @yield('content')

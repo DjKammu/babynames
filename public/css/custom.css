@@ -1,16 +1,12 @@
-span.girl{
-    color: #f3419b;
-    font-weight: 600;
+.navbar .navbar-collapse ul.navbar-nav {
+    width: 100%;
+    justify-content: space-between;
 }
-span.boy{
-    color: #1726dc;
-    font-weight: 600;
-}
-.fr li.alpha-active a{
-    background: #fff;
-    border: 1px solid;
-    color: #00BCD4;
-}
-table.cursor tr{
- cursor: pointer;
+
+
+
+@media (max-width:767px) {
+    .blog-header-logo {
+        font-size: 7vw;
+    }
 }
