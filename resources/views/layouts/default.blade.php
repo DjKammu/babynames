@@ -28,6 +28,9 @@
     gtag('config', 'G-PWJGNKSTVQ');
   </script>
 
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8829494717294997"
+     crossorigin="anonymous"></script>
+
   </head>
   <body data-new-gr-c-s-check-loaded="14.991.0" data-gr-ext-installed="">
     
