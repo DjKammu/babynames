@@ -6,10 +6,10 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
     @if(@$categories)
-        @foreach ($categories as $bank)
+        @foreach ($categories as $category)
         <url>
-            <loc>{{url('baby-names/'.$bank->slug)}}</loc>
-            <lastmod>{{ ($bank->updated_at) ? $bank->updated_at->tz('UTC')->toAtomString():
+             <loc>{{url('sitemap/category/'.$category->slug.'.xml')}}</loc>
+            <lastmod>{{ ($category->updated_at) ? $category->updated_at->tz('UTC')->toAtomString():
              \Carbon\Carbon::now()->tz('UTC')->toAtomString() }}</lastmod>
             <priority>0.9</priority>
         </url>

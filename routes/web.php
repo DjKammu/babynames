@@ -58,14 +58,14 @@ Route::get('/sitemap/categories.xml', 'SitemapController@categories');
 Route::get('/sitemap/tags.xml', 'SitemapController@tags');
 Route::get('/sitemap/origins.xml', 'SitemapController@origins');
 
-Route::get('{tc}.xml', [
-  'uses' => 'SitemapController@tagsCateogries'
+Route::get('/sitemap/category/{category}.xml', [
+  'uses' => 'SitemapController@category'
 ])->where('slug', '([A-Za-z0-9\-\/]+)');
 
-Route::get('{tc}/{slug}.xml', [
-  'uses' => 'SitemapController@tagCateogry'
+Route::get('/sitemap/tag/{tag}.xml', [
+  'uses' => 'SitemapController@tag'
 ])->where('slug', '([A-Za-z0-9\-\/]+)');
 
-Route::get('{slug}.xml', [
-  'uses' => 'SitemapController@lyrichord'
+Route::get('/sitemap/origin/{origin}.xml', [
+  'uses' => 'SitemapController@origin'
 ])->where('slug', '([A-Za-z0-9\-\/]+)');

@@ -43,6 +43,27 @@ class SitemapController extends Controller
 
     } 
 
+    public function origin($origin)
+    {    
+        return response()->view('sitemap.origin', ['origin' => $origin])
+              ->header('Content-Type', 'text/xml');
+
+    }  
+
+    public function tag($tag)
+    {    
+        return response()->view('sitemap.tag', ['tag' => $tag])
+              ->header('Content-Type', 'text/xml');
+
+    } 
+
+    public function category($category)
+    {    
+        return response()->view('sitemap.category', ['category' => $category])
+              ->header('Content-Type', 'text/xml');
+
+    } 
+
 
     public function pages(){
         return response()->view('sitemap.pages')->header('Content-Type', 'text/xml');

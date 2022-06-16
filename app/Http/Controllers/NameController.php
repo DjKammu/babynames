@@ -138,7 +138,7 @@ class NameController extends Controller
     }
 
     public function tagOrigin(Request $request,$tagOrigin,$slug){
-         
+ 
         if(!in_array(strtolower($tagOrigin), [ Name::ORIGINS,Name::TAGS ])){
             return redirect('/') ;
         } 
