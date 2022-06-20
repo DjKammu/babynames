@@ -8,7 +8,7 @@ http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     @if(@$origins)
         @foreach ($origins as $origin)
         <url>
-             <loc>{{url('sitemap/origin/'.$origin->slug.'.xml')}}</loc>
+             <loc>{{url('sitemap/origins/'.$origin->slug.'.xml')}}</loc>
             <lastmod>{{ ($origin->updated_at) ? $origin->updated_at->tz('UTC')->toAtomString():
              \Carbon\Carbon::now()->tz('UTC')->toAtomString() }}</lastmod>
             <priority>0.9</priority>

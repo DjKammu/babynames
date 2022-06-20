@@ -33,23 +33,15 @@ Route::get('/cache-clear', function () {
     Artisan::call('view:clear');
 });
 
-Route::get('search/{slug}.xml', [
-  'uses' => 'SitemapController@search'
-])->where('slug','.*');
 
-Route::get('search/{slug}', [
-  'uses' => 'NameController@search'
-])->where('slug','.*');
-
+Route::get('{tc}/{slug}/{gender}/{letter}', [
+  'uses' => 'NameController@tagOriginNames'
+])->name('tag.origin.letter');
 
 Route::get('{tc}/{slug}', [
   'uses' => 'NameController@tagOrigin'
 ])->where('slug', '([A-Za-z0-9\-\/]+)');
 
-
-Route::get('{slug}', [
-  'uses' => 'NameController@lyrichord'
-])->where('slug', '([A-Za-z0-9\-\/]+)');
 
 
 /*SITE MAP */
@@ -62,10 +54,10 @@ Route::get('/sitemap/category/{category}.xml', [
   'uses' => 'SitemapController@category'
 ])->where('slug', '([A-Za-z0-9\-\/]+)');
 
-Route::get('/sitemap/tag/{tag}.xml', [
+Route::get('/sitemap/tags/{tag}.xml', [
   'uses' => 'SitemapController@tag'
 ])->where('slug', '([A-Za-z0-9\-\/]+)');
 
-Route::get('/sitemap/origin/{origin}.xml', [
+Route::get('/sitemap/origins/{origin}.xml', [
   'uses' => 'SitemapController@origin'
 ])->where('slug', '([A-Za-z0-9\-\/]+)');

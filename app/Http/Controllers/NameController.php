@@ -138,7 +138,7 @@ class NameController extends Controller
     }
 
     public function tagOrigin(Request $request,$tagOrigin,$slug){
- 
+      
         if(!in_array(strtolower($tagOrigin), [ Name::ORIGINS,Name::TAGS ])){
             return redirect('/') ;
         } 
@@ -158,7 +158,37 @@ class NameController extends Controller
 
         $cat  = $slug;
 
-       return view('names',compact('cat','boys','girls'));
+       return view('names-to',compact('tagOrigin','cat','boys','girls'));
+
+    } 
+
+     public function tagOriginNames(Request $request,$tagOrigin,$slug,$gender,$letter){
+      
+        if(!in_array(strtolower($tagOrigin), [ Name::ORIGINS,Name::TAGS ]) || 
+           !in_array(strtolower($gender), [ Name::BOY,Name::GIRL ]) || 
+           !in_array(strtolower($letter), range('a', 'z'))){
+            return redirect('/') ;
+        } 
+
+        $qGender = strtolower($gender) == Name::BOY ? Name::MALE : Name::FEMALE;
+
+        $qNames = Name::whereHas($tagOrigin, function($query) use ($slug) {
+              $query->where('slug',$slug);
+        })->whereGender($qGender)->where('name', 'like', $letter.'%');
+
+        $allNames =  $qNames->get();
+
+        $names = $qNames->with(['meanings' => function ($query) {
+                $query->where('name','<>','...')->distinct('name');
+         }])->paginate((new Name)->perPage);
+
+        $boys = @$allNames->where('gender',Name::MALE)->count(); 
+        $girls = @$allNames->where('gender',Name::FEMALE)->count(); 
+        
+        $cat  = $slug;
+
+        return view('names-list-to',compact('tagOrigin','cat','gender','boys','letter','girls',
+            'names'));
 
     }
 }

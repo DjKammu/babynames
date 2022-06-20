@@ -8,8 +8,7 @@ http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     @if(@$tags)
         @foreach ($tags as $tag)
         <url>
-         <loc>{{url('sitemap/tag/'.$tag->slug.'.xml')}}</loc>
-            <!-- <loc>{{url('tags/'.$tag->slug)}}</loc> -->
+         <loc>{{url('sitemap/tags/'.$tag->slug.'.xml')}}</loc>
             <lastmod>{{ ($tag->updated_at) ? $tag->updated_at->tz('UTC')->toAtomString():
              \Carbon\Carbon::now()->tz('UTC')->toAtomString() }}</lastmod>
             <priority>0.9</priority>

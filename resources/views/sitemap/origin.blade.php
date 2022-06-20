@@ -11,7 +11,7 @@ http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     @foreach($alphas as $alpha)
 
     <url>
-             <loc>{{route("baby-names.letter",[$origin,"boy", $alpha])}}</loc>
+             <loc>{{route("tag.origin.letter",['origins',$origin,"boy", $alpha])}}</loc>
             <lastmod>{{ (@$alpha->updated_at) ? @$alpha->updated_at->tz('UTC')->toAtomString():
              \Carbon\Carbon::now()->tz('UTC')->toAtomString() }}</lastmod>
             <priority>0.9</priority>
@@ -22,7 +22,7 @@ http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
            @foreach($alphas as $alpha)
 
            <url>
-             <loc>{{route("baby-names.letter",[$origin,"girl",$alpha] ) }}</loc>
+             <loc>{{route("tag.origin.letter",['origins',$origin,"girl",$alpha] ) }}</loc>
             
             <lastmod>{{ (@$alpha->updated_at) ? @$alpha->updated_at->tz('UTC')->toAtomString():
              \Carbon\Carbon::now()->tz('UTC')->toAtomString() }}</lastmod>
