@@ -45,7 +45,7 @@ Route::get('{tc}/{slug}', [
 
 
 /*SITE MAP */
-Route::get('/sitemap/index.xml', 'SitemapController@index');
+Route::get('/sitemap.xml', 'SitemapController@index');
 Route::get('/sitemap/categories.xml', 'SitemapController@categories');
 Route::get('/sitemap/tags.xml', 'SitemapController@tags');
 Route::get('/sitemap/origins.xml', 'SitemapController@origins');
